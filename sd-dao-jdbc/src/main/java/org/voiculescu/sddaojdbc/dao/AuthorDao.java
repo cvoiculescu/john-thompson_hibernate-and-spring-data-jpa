@@ -11,4 +11,6 @@ public interface AuthorDao {
     Optional<Author> getByName(String name);
 
     Optional<Author> saveNewAuthor(Author author);
+
+    Optional<Author> updateAuthor(Author savedAuthor);
 }

@@ -7,6 +7,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.voiculescu.sddaojdbc.entity.Author;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
@@ -33,6 +35,15 @@ class AuthorDaoIntegrationTest {
     void testSaveNewAuthor(){
         Author author = new Author().setFirstName("Test").setLastName("Test");
         assertThat(authorDao.saveNewAuthor(author)).isNotNull();
+    }
+
+    @Test
+    void testUpdateAuthor(){
+        Author author = new Author().setFirstName("Test").setLastName("Test");
+        Author savedAuthor = authorDao.saveNewAuthor(author).orElseThrow(RuntimeException::new);
+        savedAuthor.setLastName("Test1");
+        Author updatedAuthor = authorDao.updateAuthor(savedAuthor).orElseThrow(RuntimeException::new);
+        assertThat(updatedAuthor.getLastName()).isEqualTo("Test1");
     }
 
 }

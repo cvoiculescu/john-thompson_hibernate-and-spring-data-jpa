@@ -18,8 +18,8 @@ public class AuthorDaoImpl implements AuthorDao {
 
     @Override
     public Optional<Author> getById(Long id) {
-        jdbcTemplate.queryForObject("SELECT * FROM author WHERE id = ?", getRowMapper(), id);
-        return Optional.empty();
+        Author author = jdbcTemplate.queryForObject("SELECT * FROM author WHERE id = ?", getRowMapper(), id);
+        return Optional.ofNullable(author);
     }
 
     @Override

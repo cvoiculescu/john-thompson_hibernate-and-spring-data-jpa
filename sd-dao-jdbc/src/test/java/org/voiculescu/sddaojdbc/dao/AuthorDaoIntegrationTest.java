@@ -29,4 +29,10 @@ class AuthorDaoIntegrationTest {
         assertThat(byId).isNotNull();
     }
 
+    @Test
+    void testSaveNewAuthor(){
+        Author author = new Author().setFirstName("Test").setLastName("Test");
+        assertThat(authorDao.saveNewAuthor(author)).isNotNull();
+    }
+
 }

@@ -27,7 +27,7 @@ public class AuthorDaoImpl implements AuthorDao {
             ps.setLong(1, id);
             try (ResultSet resultSet = ps.executeQuery()) {
                 if (resultSet.next()) {
-                    return extractAuthorFromResultSet(resultSet);
+                    return Optional.of(extractAuthorFromResultSet(resultSet));
                 }
             }
         } catch (SQLException e) {
@@ -47,7 +47,7 @@ public class AuthorDaoImpl implements AuthorDao {
             ps.setString(2, name);
             try (ResultSet resultSet = ps.executeQuery()) {
                 if (resultSet.next()) {
-                    return extractAuthorFromResultSet(resultSet);
+                    return Optional.of(extractAuthorFromResultSet(resultSet));
                 }
             }
         } catch (SQLException e) {
@@ -56,10 +56,31 @@ public class AuthorDaoImpl implements AuthorDao {
         return Optional.empty();
     }
 
-    private static Optional<Author> extractAuthorFromResultSet(ResultSet resultSet) throws SQLException {
-        return Optional.of(new Author()
+    @Override
+    public Optional<Author> saveNewAuthor(Author author) {
+        String sql = "INSERT INTO author (first_name,last_name) VALUES (?,?)";
+        try (Connection connection = source.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql);) {
+            ps.setString(1, author.getFirstName());
+            ps.setString(2, author.getLastName());
+            ps.execute();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID()");
+            if (resultSet.next()) {
+                long id = resultSet.getLong(1);
+                return getById(id);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return Optional.empty();
+    }
+
+    private static Author extractAuthorFromResultSet(ResultSet resultSet) throws SQLException {
+        return new Author()
                 .setId(resultSet.getLong("id"))
                 .setFirstName(resultSet.getString("first_name"))
-                .setLastName(resultSet.getString("last_name")));
+                .setLastName(resultSet.getString("last_name"));
+
     }
 }

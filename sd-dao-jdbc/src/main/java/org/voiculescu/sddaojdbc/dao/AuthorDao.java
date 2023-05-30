@@ -9,4 +9,6 @@ public interface AuthorDao {
     Optional<Author> getById(Long id);
 
     Optional<Author> getByName(String name);
+
+    Optional<Author> saveNewAuthor(Author author);
 }

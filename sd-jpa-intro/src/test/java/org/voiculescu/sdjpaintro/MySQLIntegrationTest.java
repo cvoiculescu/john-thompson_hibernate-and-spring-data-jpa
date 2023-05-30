@@ -24,7 +24,7 @@ public class MySQLIntegrationTest {
     public void testMySQLIntegration(){
         long countBefore = bookRepository.count();
         assertThat(countBefore).isEqualTo(2);
-        bookRepository.save(new Book("MyBook1","isbn1","MyPublisher1"));
+        bookRepository.save(new Book("MyBook1","isbn1","MyPublisher1","1"));
         long countAfter = bookRepository.count();
         assertThat(countAfter).isGreaterThan(countBefore);
     }

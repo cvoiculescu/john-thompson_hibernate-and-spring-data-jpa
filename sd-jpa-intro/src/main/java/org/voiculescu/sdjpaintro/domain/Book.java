@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -22,7 +22,9 @@ public class Book {
     private String isbn;
     private String publisher;
 
-    public Book(String title, String isbn, String publisher) {
+    private String authorId;
+
+    public Book(String title, String isbn, String publisher, String authorId) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;

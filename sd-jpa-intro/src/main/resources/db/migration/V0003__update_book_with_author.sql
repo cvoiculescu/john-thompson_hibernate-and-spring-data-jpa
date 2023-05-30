@@ -1,0 +1,5 @@
+ALTER TABLE book
+    ADD author_id VARCHAR(255) NULL;
+
+ALTER TABLE author
+    MODIFY id BIGINT AUTO_INCREMENT;

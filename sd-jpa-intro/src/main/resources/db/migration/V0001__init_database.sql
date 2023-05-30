@@ -7,11 +7,12 @@ create table book
     isbn      varchar(255),
     publisher varchar(255),
     title     varchar(255)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table book_seq
 (
     next_val bigint
-) engine=InnoDB;
+) engine = InnoDB;
 
-insert into book_seq values (1);
+insert into book_seq
+values (1);

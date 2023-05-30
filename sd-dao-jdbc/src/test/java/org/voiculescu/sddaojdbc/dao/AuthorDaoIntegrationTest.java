@@ -23,4 +23,10 @@ class AuthorDaoIntegrationTest {
         assertThat(byId).isNotNull();
     }
 
+    @Test
+    void testGetAuthorByName(){
+        Author byId = authorDao.getByName("Corneliu").get();
+        assertThat(byId).isNotNull();
+    }
+
 }

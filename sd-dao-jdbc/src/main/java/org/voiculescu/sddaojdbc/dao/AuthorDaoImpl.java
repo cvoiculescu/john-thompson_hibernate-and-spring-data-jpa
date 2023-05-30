@@ -1,5 +1,6 @@
 package org.voiculescu.sddaojdbc.dao;
 
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 import org.voiculescu.sddaojdbc.entity.Author;
 

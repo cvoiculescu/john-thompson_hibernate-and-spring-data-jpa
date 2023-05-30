@@ -24,7 +24,8 @@ public class AuthorDaoImpl implements AuthorDao {
 
     @Override
     public Optional<Author> getByName(String name) {
-        return Optional.empty();
+        Author author = jdbcTemplate.queryForObject("SELECT * FROM author WHERE first_name = ? or last_name= ?", getRowMapper(), name, name);
+        return Optional.ofNullable(author);
     }
 
     @Override

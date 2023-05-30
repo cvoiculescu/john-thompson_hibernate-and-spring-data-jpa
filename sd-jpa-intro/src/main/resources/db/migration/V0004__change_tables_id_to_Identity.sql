@@ -1,0 +1,4 @@
+DROP TABLE book_seq;
+
+ALTER TABLE book
+    MODIFY id BIGINT AUTO_INCREMENT;

@@ -14,8 +14,7 @@ import lombok.experimental.Accessors;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "test")
-    @SequenceGenerator(name = "test", sequenceName = "book_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 

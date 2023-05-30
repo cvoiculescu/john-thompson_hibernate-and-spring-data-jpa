@@ -2,10 +2,12 @@ package org.voiculescu.sdjpaintro.bootstrap;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.voiculescu.sdjpaintro.domain.Book;
 import org.voiculescu.sdjpaintro.repository.BookRepository;
 
+@Profile({"default", "local"})
 @Component
 @Slf4j
 public class DataInitializer implements CommandLineRunner {
@@ -18,9 +20,7 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (bookRepository.count() > 0) {
-            return;
-        }
+        bookRepository.deleteAll();
         Book bookDDD = new Book().setTitle("Domain Driven Design").setPublisher("Random House");
 
         bookRepository.save(bookDDD);

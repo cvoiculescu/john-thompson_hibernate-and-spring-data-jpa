@@ -21,12 +21,15 @@ public class Book {
     private String title;
     private String publisher;
     private String isbn;
-    private String author_id;
 
-    public Book(String title, String publisher, String isbn, String author_id) {
+    @OneToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+
+    public Book(String title, String publisher, String isbn, Author author) {
         this.title = title;
         this.publisher = publisher;
         this.isbn = isbn;
-        this.author_id = author_id;
+        this.author = author;
     }
 }

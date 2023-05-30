@@ -4,7 +4,9 @@
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
     <option name="sourceDbValue" value="4c315540-3795-4d89-b5b4-9a812d84c733" />
-    <option name="sourceModelValue" value="Default" />
-    <option name="targetDbValue" value="4c315540-3795-4d89-b5b4-9a812d84c733" />
+    <option name="sourceModelValue" value="bookdb2" />
+    <option name="targetDbValue" value="26efe9ed-575a-4693-996c-d674a014088b" />
+    <option name="snapshotDbValue" value="4c315540-3795-4d89-b5b4-9a812d84c733" />
+    <option name="newEntityIdStrategy" value="Identity" />
   </component>
 </project>

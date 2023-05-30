@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/hibernate-and-spring-data-jpa.iml" filepath="$PROJECT_DIR$/.idea/hibernate-and-spring-data-jpa.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sd-dao-jdbc/sd-dao-jdbc.iml" filepath="$PROJECT_DIR$/sd-dao-jdbc/sd-dao-jdbc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sd-jpa-intro/sd-jpa-intro.iml" filepath="$PROJECT_DIR$/sd-jpa-intro/sd-jpa-intro.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit moduleName="sd-jpa-intro" name="Default" defaultSearchScope="Project">
+        <packages>
+          <package value="org.voiculescu.sdjpaintro" />
+        </packages>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+</project>

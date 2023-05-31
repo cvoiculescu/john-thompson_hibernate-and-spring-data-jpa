@@ -30,11 +30,14 @@ public class AuthorDaoImpl implements AuthorDao {
 
     @Override
     public Optional<Author> save(Author author) {
-        return Optional.empty();
+        jdbcTemplate.update("INSERT INTO author (first_name,last_name) values (?,?)", author.getFirstName(), author.getLastName());
+        Long createdId = jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Long.class);
+        return getById(createdId);
     }
 
     @Override
     public Optional<Author> update(Author savedAuthor) {
+
         return Optional.empty();
     }
 

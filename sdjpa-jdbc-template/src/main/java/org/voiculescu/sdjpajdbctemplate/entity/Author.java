@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @Getter
@@ -19,8 +21,8 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    @OneToOne(mappedBy = "author")
-    private Book book;
+    @OneToMany(mappedBy = "author")
+    private List<Book> books;
 
     public Author(String firstName, String lastName) {
         this.firstName = firstName;

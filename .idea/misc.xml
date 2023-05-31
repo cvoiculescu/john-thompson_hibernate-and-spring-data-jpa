@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/sdjpa-jdbc-template/pom.xml" />
         <option value="$PROJECT_DIR$/sdjpa-jdbc/pom.xml" />
         <option value="$PROJECT_DIR$/sdjpa-intro/pom.xml" />
+        <option value="$PROJECT_DIR$/sdjpa-hibernate-dao/pom.xml" />
       </list>
     </option>
   </component>

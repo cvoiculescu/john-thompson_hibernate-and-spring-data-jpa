@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sdjpa-intro" />
+        <module name="sdjpa-hibernate-dao" />
         <module name="sdjpa-jdbc-template" />
         <module name="sdjpa-jdbc" />
       </profile>
@@ -21,6 +22,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="sd-dao-jdbc (1)" options="-parameters" />
       <module name="sd-dao-jdbc (2)" options="-parameters" />
+      <module name="sdjpa-hibernate-dao" options="-parameters" />
       <module name="sdjpa-intro" options="-parameters" />
       <module name="sdjpa-jdbc" options="-parameters" />
       <module name="sdjpa-jdbc-template" options="-parameters" />

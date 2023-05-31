@@ -13,6 +13,11 @@
           <package value="org.voiculescu.sdjpajdbctemplate" />
         </packages>
       </persistence-unit>
+      <persistence-unit name="hibernate-dao">
+        <packages>
+          <package value="org.voiculescu.sdjpahibernatedao" />
+        </packages>
+      </persistence-unit>
     </persistence-units>
   </component>
 </project>

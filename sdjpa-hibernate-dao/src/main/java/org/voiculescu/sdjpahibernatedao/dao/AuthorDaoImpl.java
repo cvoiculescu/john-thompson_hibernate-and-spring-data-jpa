@@ -25,14 +25,20 @@ public class AuthorDaoImpl implements AuthorDao {
 
     @Override
     public Optional<Author> getByName(String name) {
-        TypedQuery<Author> query = getEntityManager().createQuery("select a from Author a where a.firstName= :name or a.lastName= :name", Author.class);
+        EntityManager em = getEntityManager();
+        TypedQuery<Author> query = em.createQuery("select a from Author a where a.firstName= :name or a.lastName= :name", Author.class);
         query.setParameter("name",name);
         return Optional.of(query.getSingleResult());
     }
 
     @Override
     public Optional<Author> save(Author author) {
-        return Optional.empty();
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        em.persist(author);
+        em.flush();
+        em.getTransaction().commit();
+        return Optional.of(author);
     }
 
     @Override

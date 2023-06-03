@@ -8,6 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.voiculescu.sdjpaspringdataqueries.entity.Book;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
@@ -35,6 +38,18 @@ class BookRepositoryTest {
     @Test
     void testNoException(){
         assertNull(bookRepository.getByTitle("foo"));
+    }
+
+    @Test
+    void testBookStream(){
+        AtomicInteger count = new AtomicInteger();
+        bookRepository.findAllByTitleNotNull()
+                .forEach(book -> {
+                    count.incrementAndGet();
+                });
+        assertThat(count.get()).isGreaterThan(5);
+
+
     }
 
 }

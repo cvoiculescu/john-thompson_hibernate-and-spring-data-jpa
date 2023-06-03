@@ -1,10 +1,12 @@
 package org.voiculescu.sdjpaspringdataqueries.repository;
 
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.Nullable;
 import org.voiculescu.sdjpaspringdataqueries.entity.Book;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
 
@@ -14,4 +16,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Nullable
     Book getByTitle(@Nullable String title);
+
+    Stream<Book> findAllByTitleNotNull();
 }

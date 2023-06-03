@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/hibernate-and-spring-data-jpa.iml" filepath="$PROJECT_DIR$/.idea/hibernate-and-spring-data-jpa.iml" />
       <module fileurl="file://$PROJECT_DIR$/sdjpa-hibernate-dao/sdjpa-hibernate-dao.iml" filepath="$PROJECT_DIR$/sdjpa-hibernate-dao/sdjpa-hibernate-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdjpa-jdbc-template/sdjpa-jdbc-template.iml" filepath="$PROJECT_DIR$/sdjpa-jdbc-template/sdjpa-jdbc-template.iml" />
     </modules>
   </component>
 </project>

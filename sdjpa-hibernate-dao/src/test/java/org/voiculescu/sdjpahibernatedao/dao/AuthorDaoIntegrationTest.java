@@ -9,6 +9,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.voiculescu.sdjpahibernatedao.entity.Author;
 import org.voiculescu.sdjpahibernatedao.exception.NotFoundException;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -50,7 +51,7 @@ class AuthorDaoIntegrationTest {
     }
 
     @Test
-    void testDeleteById(){
+    void testDeleteById() {
         Author author = new Author().setFirstName("Test").setLastName("Test");
         Author savedAuthor = authorDao.save(author).orElseThrow(NotFoundException::new);
         authorDao.deleteById(savedAuthor.getId());
@@ -58,4 +59,10 @@ class AuthorDaoIntegrationTest {
         assertThat(byId).isEmpty();
     }
 
+    @Test
+    void testListOfAuthorsLastNameLike() {
+        List<Author> authors = authorDao.listAuthorByLastNameLike("Last");
+        assertThat(authors).isNotNull();
+        assertThat(authors.size()).isGreaterThan(0);
+    }
 }

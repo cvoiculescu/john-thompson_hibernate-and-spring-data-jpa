@@ -2,10 +2,12 @@ package org.voiculescu.sdjpahibernatedao.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Component;
 import org.voiculescu.sdjpahibernatedao.entity.Author;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -18,6 +20,16 @@ public class AuthorDaoImpl implements AuthorDao {
     }
 
     @Override
+    public List<Author> listAuthorByLastNameLike(String lastName) {
+        try (EntityManager em = getEntityManager()) {
+            TypedQuery<Author> query =
+                    em.createQuery("SELECT a FROM Author a WHERE a.lastName like :last_name", Author.class);
+            query.setParameter("last_name", "%" + lastName + "%");
+            return query.getResultList();
+        }
+    }
+
+    @Override
     public Optional<Author> getById(Long id) {
         Author author = getEntityManager().find(Author.class, id);
         return Optional.ofNullable(author);
@@ -27,7 +39,7 @@ public class AuthorDaoImpl implements AuthorDao {
     public Optional<Author> getByName(String name) {
         EntityManager em = getEntityManager();
         TypedQuery<Author> query = em.createQuery("select a from Author a where a.firstName= :name or a.lastName= :name", Author.class);
-        query.setParameter("name",name);
+        query.setParameter("name", name);
         return Optional.of(query.getSingleResult());
     }
 
@@ -48,7 +60,7 @@ public class AuthorDaoImpl implements AuthorDao {
         em.merge(author);
         em.flush();
         em.clear();
-        return Optional.of(em.find(Author.class,author.getId()));
+        return Optional.of(em.find(Author.class, author.getId()));
     }
 
     @Override

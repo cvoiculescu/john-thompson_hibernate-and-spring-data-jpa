@@ -13,7 +13,9 @@ import java.util.List;
 @Getter
 @Setter
 @Accessors(chain = true)
-@NamedQueries(@NamedQuery(name = "author_find_all",query = "SELECT a FROM Author a"))
+@NamedQueries({@NamedQuery(name = "author_find_all", query = "FROM Author"),
+        @NamedQuery(name = "author_find_by_name",
+                query = "FROM Author WHERE firstName like :name OR lastName like :name")})
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

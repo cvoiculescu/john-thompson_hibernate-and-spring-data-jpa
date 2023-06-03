@@ -59,4 +59,10 @@ class BookRepositoryTest {
         assertNotNull(book);
     }
 
+    @Test
+    void testQuery(){
+        Book book = bookRepository.findBookByTitleWithQuery("ean Co");
+        assertNotNull(book);
+    }
+
 }

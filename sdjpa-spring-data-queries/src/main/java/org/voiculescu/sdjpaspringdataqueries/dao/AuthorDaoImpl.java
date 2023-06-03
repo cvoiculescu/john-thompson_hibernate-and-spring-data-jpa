@@ -1,5 +1,6 @@
 package org.voiculescu.sdjpaspringdataqueries.dao;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.voiculescu.sdjpaspringdataqueries.entity.Author;
@@ -23,7 +24,8 @@ public class AuthorDaoImpl implements AuthorDao {
 
     @Override
     public Author getByName(String fistName, String lastName) {
-        return authorRepository.findByFirstNameLikeIgnoreCaseAndLastNameLikeIgnoreCase(fistName,lastName);
+        return authorRepository.findByFirstNameLikeIgnoreCaseAndLastNameLikeIgnoreCase(fistName, lastName)
+                .orElseThrow(EntityNotFoundException::new);
     }
 
     @Override

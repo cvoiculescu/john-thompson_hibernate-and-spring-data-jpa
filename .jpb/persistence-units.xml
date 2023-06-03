@@ -18,6 +18,11 @@
           <package value="org.voiculescu.sdjpahibernatedao" />
         </packages>
       </persistence-unit>
+      <persistence-unit name="springdataqueries">
+        <packages>
+          <package value="org.voiculescu.sdjpaspringdataqueries" />
+        </packages>
+      </persistence-unit>
     </persistence-units>
   </component>
 </project>

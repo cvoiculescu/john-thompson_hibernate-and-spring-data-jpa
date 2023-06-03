@@ -13,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Accessors(chain = true)
+@NamedQueries(@NamedQuery(name = "author_find_all",query = "SELECT a FROM Author a"))
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

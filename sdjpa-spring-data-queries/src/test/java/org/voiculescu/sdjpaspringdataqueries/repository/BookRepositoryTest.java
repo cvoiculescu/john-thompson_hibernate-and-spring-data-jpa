@@ -8,6 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.voiculescu.sdjpaspringdataqueries.entity.Book;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -48,8 +50,13 @@ class BookRepositoryTest {
                     count.incrementAndGet();
                 });
         assertThat(count.get()).isGreaterThan(5);
+    }
 
-
+    @Test
+    void testBookFuture() throws ExecutionException, InterruptedException {
+        Future<Book> bookFuture = bookRepository.queryByTitle("Clean Code");
+        Book book = bookFuture.get();
+        assertNotNull(book);
     }
 
 }

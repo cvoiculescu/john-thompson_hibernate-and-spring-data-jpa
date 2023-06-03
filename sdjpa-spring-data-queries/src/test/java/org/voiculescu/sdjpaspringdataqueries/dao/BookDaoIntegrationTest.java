@@ -71,4 +71,5 @@ class BookDaoIntegrationTest {
         assertThrows(JpaObjectRetrievalFailureException.class, () -> bookDao.getById(savedBook.getId()));
     }
 
+
 }

@@ -1,6 +1,5 @@
 package org.voiculescu.orderservice.repository;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,8 @@ import org.voiculescu.orderservice.entity.Product;
 import org.voiculescu.orderservice.entity.ProductStatus;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest
 @ComponentScan(basePackages = "org.voiculescu.orderservice")

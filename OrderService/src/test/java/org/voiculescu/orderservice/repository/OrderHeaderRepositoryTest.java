@@ -27,6 +27,7 @@ class OrderHeaderRepositoryTest {
         assertThat(saved).isNotNull();
         assertThat(saved.getId()).isNotNull();
         assertThat(saved.getCreatedDate()).isNotNull();
+        assertThat(saved.getLastModifiedDate()).isNotNull();
     }
 
     @Test

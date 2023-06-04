@@ -23,6 +23,11 @@
           <package value="org.voiculescu.sdjpaspringdataqueries" />
         </packages>
       </persistence-unit>
+      <persistence-unit name="orderservice" defaultSearchScope="Project">
+        <packages>
+          <package value="org.voiculescu.orderservice" />
+        </packages>
+      </persistence-unit>
     </persistence-units>
   </component>
 </project>

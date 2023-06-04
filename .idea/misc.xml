@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/sdjpa-intro/pom.xml" />
         <option value="$PROJECT_DIR$/sdjpa-hibernate-dao/pom.xml" />
         <option value="$PROJECT_DIR$/sdjpa-spring-data-queries/pom.xml" />
+        <option value="$PROJECT_DIR$/OrderService/pom.xml" />
       </list>
     </option>
   </component>

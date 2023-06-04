@@ -4,8 +4,8 @@
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
     <option name="sourceDbValue" value="4c315540-3795-4d89-b5b4-9a812d84c733" />
-    <option name="sourceModelValue" value="jdbc-template" />
-    <option name="targetDbValue" value="6fbf6e11-1c01-42f6-8bb3-78beb7db9202" />
+    <option name="sourceModelValue" value="orderservice" />
+    <option name="targetDbValue" value="1b0c9bb0-db6f-4014-addc-814b4e676c6e" />
     <option name="isSnapshotDb" value="false" />
     <option name="snapshotDbValue" value="4c315540-3795-4d89-b5b4-9a812d84c733" />
     <option name="snapshotModelValue" value="jdbc-template" />

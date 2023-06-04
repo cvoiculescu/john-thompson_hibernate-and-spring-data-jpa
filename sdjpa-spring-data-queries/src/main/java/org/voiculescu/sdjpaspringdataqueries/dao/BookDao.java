@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface BookDao {
 
+    List<Book> findAllBooks();
+
+    List<Book> findAllBooks(int pageSize, int offset);
+
     Book getById(Long id);
 
     Book getByTitle(String title);

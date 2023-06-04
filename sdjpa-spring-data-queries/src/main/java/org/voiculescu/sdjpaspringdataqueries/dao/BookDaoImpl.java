@@ -1,6 +1,7 @@
 package org.voiculescu.sdjpaspringdataqueries.dao;
 
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.voiculescu.sdjpaspringdataqueries.entity.Book;
@@ -16,6 +17,17 @@ public class BookDaoImpl implements BookDao {
 
     public BookDaoImpl(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
+    }
+
+    @Override
+    public List<Book> findAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    @Override
+    public List<Book> findAllBooks(int pageSize, int offset) {
+        bookRepository.findAll(PageRequest.of(pageSize, offset));
+        return null;
     }
 
     @Override

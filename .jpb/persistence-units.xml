@@ -2,12 +2,6 @@
 <project version="4">
   <component name="PersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit name="Default">
-        <packages>
-          <package value="" />
-          <package value="org.voiculescu.sdjpajdbctemplate" />
-        </packages>
-      </persistence-unit>
       <persistence-unit name="jdbc-template" defaultSearchScope="Project">
         <packages>
           <package value="org.voiculescu.sdjpajdbctemplate" />
@@ -24,6 +18,11 @@
         </packages>
       </persistence-unit>
       <persistence-unit name="orderservice" defaultSearchScope="Project">
+        <packages>
+          <package value="org.voiculescu.orderservice" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="OrderService" name="Default">
         <packages>
           <package value="org.voiculescu.orderservice" />
         </packages>

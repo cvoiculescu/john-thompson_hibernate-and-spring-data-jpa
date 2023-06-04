@@ -71,4 +71,10 @@ class BookRepositoryTest {
         assertNotNull(book);
     }
 
+    @Test
+    void testJpaNamed(){
+        Book book = bookRepository.jpaNamed("ean Co");
+        assertNotNull(book);
+    }
+
 }

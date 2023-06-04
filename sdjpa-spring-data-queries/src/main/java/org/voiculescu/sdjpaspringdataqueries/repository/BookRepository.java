@@ -1,5 +1,6 @@
 package org.voiculescu.sdjpaspringdataqueries.repository;
 
+import jakarta.persistence.NamedQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -30,4 +31,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query(nativeQuery = true, value = "SELECT * FROM book WHERE title like concat('%',:title,'%')")
     Book findBookByTitleWithNativeQuery(@Param("title") String title);
+
+    Book jpaNamed(String title);
+
 }

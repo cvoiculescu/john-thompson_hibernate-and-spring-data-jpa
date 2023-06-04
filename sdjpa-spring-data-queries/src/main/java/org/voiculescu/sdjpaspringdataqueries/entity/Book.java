@@ -7,6 +7,9 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Book.jpaNamed", query = "SELECT b from Book b WHERE b.title ilike concat('%',:title,'%')")
+})
 @NoArgsConstructor
 @Getter
 @Setter

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.voiculescu.orderservice.entity.OrderHeader;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJpaTest
 @ComponentScan(basePackages = "org.voiculescu.orderservice")
@@ -20,21 +21,23 @@ class OrderHeaderRepositoryTest {
 
     @Test
     @Transactional
-    void createOrderHeader(){
+    void createOrderHeader() {
         OrderHeader orderHeader = new OrderHeader().setCustomerName("Customer");
-        orderHeaderRepository.save(orderHeader);
-        assertThat(orderHeader.getId()).isNotNull();
+        OrderHeader saved = orderHeaderRepository.save(orderHeader);
+        assertThat(saved).isNotNull();
+        assertThat(saved.getId()).isNotNull();
+        assertThat(saved.getCreatedDate()).isNotNull();
     }
 
     @Test
-    void retrieveOrder(){
+    void retrieveOrder() {
         OrderHeader byId = orderHeaderRepository.findById(1L).orElse(null);
         assertThat(byId).isNotNull();
     }
 
     @Test
     @Transactional
-    void updateOrder(){
+    void updateOrder() {
         OrderHeader saved = orderHeaderRepository.save(new OrderHeader().setCustomerName("Customer"));
         orderHeaderRepository.flush();
         saved.setCustomerName("Customer1");

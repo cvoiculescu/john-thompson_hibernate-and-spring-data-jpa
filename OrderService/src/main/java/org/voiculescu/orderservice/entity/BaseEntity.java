@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @MappedSuperclass
@@ -19,7 +21,9 @@ public abstract class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     protected Long id;
-
+    @Column(name = "created_date", updatable = false)
+    @CreationTimestamp
+    protected Timestamp createdDate;
 
     @Override
     public boolean equals(Object o) {
@@ -28,11 +32,14 @@ public abstract class BaseEntity {
 
         BaseEntity that = (BaseEntity) o;
 
-        return Objects.equals(id, that.id);
+        if (!Objects.equals(id, that.id)) return false;
+        return Objects.equals(createdDate, that.createdDate);
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
+        return result;
     }
 }

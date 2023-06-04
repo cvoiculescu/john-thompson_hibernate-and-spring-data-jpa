@@ -1,6 +1,6 @@
 package org.voiculescu.orderservice.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,12 +11,7 @@ import lombok.experimental.Accessors;
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-public class OrderHeader {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class OrderHeader extends BaseEntity {
 
     private String customerName;
 

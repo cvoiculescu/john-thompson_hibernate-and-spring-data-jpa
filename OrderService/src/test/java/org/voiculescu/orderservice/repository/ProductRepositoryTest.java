@@ -53,4 +53,12 @@ class ProductRepositoryTest {
         assertThrows(JpaObjectRetrievalFailureException.class, () -> productRepository.getReferenceById(saved.getId()));
     }
 
+    @Test
+    void findByDescriptionTest() {
+        Product product = productRepository.findByDescription("PRODUCT1");
+        assertNotNull(product);
+        assertNotNull(product.getCategories());
+        assertThat(product.getCategories().size()).isGreaterThan(0);
+    }
+
 }

@@ -74,8 +74,7 @@ class OrderHeaderRepositoryTest {
                 .setProduct(product);
         OrderHeader orderHeader = new OrderHeader()
                 .setCustomerName("Customer")
-                .setOrderLines(Set.of(orderLine));
-        orderLine.setOrderHeader(orderHeader);
+                .addOrderLine(orderLine);
 
         OrderHeader saved = orderHeaderRepository.save(orderHeader);
 

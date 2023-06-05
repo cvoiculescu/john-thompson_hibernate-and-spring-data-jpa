@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -36,6 +37,15 @@ public class OrderHeader extends BaseEntity {
     private OrderStatus orderStatus;
     @OneToMany(mappedBy = "orderHeader", cascade = CascadeType.PERSIST)
     private Set<OrderLine> orderLines;
+
+    public OrderHeader addOrderLine(OrderLine orderLine) {
+        if (orderLines == null) {
+            orderLines = new HashSet<>();
+        }
+        orderLines.add(orderLine);
+        orderLine.setOrderHeader(this);
+        return this;
+    }
 
     @Override
     public boolean equals(Object o) {

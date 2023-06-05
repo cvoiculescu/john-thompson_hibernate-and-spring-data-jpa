@@ -1,5 +1,6 @@
 package org.voiculescu.orderservice.repository;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -8,6 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.Transactional;
 import org.voiculescu.orderservice.entity.OrderHeader;
 import org.voiculescu.orderservice.entity.OrderLine;
+import org.voiculescu.orderservice.entity.Product;
+import org.voiculescu.orderservice.entity.ProductStatus;
 
 import java.util.Set;
 
@@ -22,6 +25,18 @@ class OrderHeaderRepositoryTest {
 
     @Autowired
     OrderHeaderRepository orderHeaderRepository;
+
+    @Autowired
+    ProductRepository productRepository;
+
+    Product product;
+
+    @BeforeEach
+    void setUp() {
+        product = productRepository.saveAndFlush(new Product()
+                .setDescription("Test Product")
+                .setProductStatus(ProductStatus.NEW));
+    }
 
     @Test
     @Transactional
@@ -55,7 +70,8 @@ class OrderHeaderRepositoryTest {
     void testOrderWithLine() {
 
         OrderLine orderLine = new OrderLine()
-                .setQuantityOrdered(5);
+                .setQuantityOrdered(5)
+                .setProduct(product);
         OrderHeader orderHeader = new OrderHeader()
                 .setCustomerName("Customer")
                 .setOrderLines(Set.of(orderLine));

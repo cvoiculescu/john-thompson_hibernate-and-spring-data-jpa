@@ -17,12 +17,12 @@
           <package value="org.voiculescu.sdjpaspringdataqueries" />
         </packages>
       </persistence-unit>
-      <persistence-unit name="orderservice" defaultSearchScope="Project">
+      <persistence-unit moduleName="OrderService" name="Default">
         <packages>
           <package value="org.voiculescu.orderservice" />
         </packages>
       </persistence-unit>
-      <persistence-unit moduleName="OrderService" name="Default">
+      <persistence-unit name="orderservice">
         <packages>
           <package value="org.voiculescu.orderservice" />
         </packages>

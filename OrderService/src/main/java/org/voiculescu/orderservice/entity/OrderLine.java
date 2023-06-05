@@ -16,7 +16,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Accessors(chain = true)
 @Table(name = "order_line")
-public class OrderLine extends BaseEntity{
+public class OrderLine extends BaseEntity {
     private Integer quantityOrdered;
 
     @ManyToOne
@@ -30,7 +30,9 @@ public class OrderLine extends BaseEntity{
 
         OrderLine orderLine = (OrderLine) o;
 
-        return Objects.equals(quantityOrdered, orderLine.quantityOrdered);
+        if (!Objects.equals(quantityOrdered, orderLine.quantityOrdered))
+            return false;
+        return Objects.equals(orderHeader, orderLine.orderHeader);
     }
 
     @Override

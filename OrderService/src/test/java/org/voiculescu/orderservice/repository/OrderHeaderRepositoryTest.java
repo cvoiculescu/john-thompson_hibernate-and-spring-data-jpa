@@ -52,17 +52,22 @@ class OrderHeaderRepositoryTest {
     }
 
     @Test
-    void testOrderWithLine(){
-        OrderHeader orderHeader = new OrderHeader().setCustomerName("Customer");
-        OrderHeader saved = orderHeaderRepository.save(orderHeader);
-        OrderLine orderLine = new OrderLine().setQuantityOrdered(5);
-        orderHeader.setOrderLines(Set.of(orderLine));
+    void testOrderWithLine() {
+
+        OrderLine orderLine = new OrderLine()
+                .setQuantityOrdered(5);
+        OrderHeader orderHeader = new OrderHeader()
+                .setCustomerName("Customer")
+                .setOrderLines(Set.of(orderLine));
         orderLine.setOrderHeader(orderHeader);
+
+        OrderHeader saved = orderHeaderRepository.save(orderHeader);
 
         assertThat(saved).isNotNull();
         assertThat(saved.getId()).isNotNull();
         assertNotNull(saved.getOrderLines());
-        assertEquals(1,saved.getOrderLines().size());
+        assertEquals(1, saved.getOrderLines().size());
+        assertNotNull(saved.getOrderLines().iterator().next().getId());
     }
 
 }

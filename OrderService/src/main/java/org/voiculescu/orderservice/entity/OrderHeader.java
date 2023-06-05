@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -33,6 +34,8 @@ public class OrderHeader extends BaseEntity {
     private Address billTo;
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
+    @OneToMany(mappedBy = "orderHeader")
+    private Set<OrderLine> orderLines;
 
     @Override
     public boolean equals(Object o) {
@@ -45,7 +48,8 @@ public class OrderHeader extends BaseEntity {
         if (!Objects.equals(customerName, that.customerName)) return false;
         if (!Objects.equals(shipping, that.shipping)) return false;
         if (!Objects.equals(billTo, that.billTo)) return false;
-        return orderStatus == that.orderStatus;
+        if (orderStatus != that.orderStatus) return false;
+        return Objects.equals(orderLines, that.orderLines);
     }
 
     @Override
@@ -55,6 +59,8 @@ public class OrderHeader extends BaseEntity {
         result = 31 * result + (shipping != null ? shipping.hashCode() : 0);
         result = 31 * result + (billTo != null ? billTo.hashCode() : 0);
         result = 31 * result + (orderStatus != null ? orderStatus.hashCode() : 0);
+        result = 31 * result + (orderLines != null ? orderLines.hashCode() : 0);
         return result;
     }
+
 }

@@ -32,7 +32,7 @@ public class OrderHeader extends BaseEntity {
 
     @OneToMany(mappedBy = "orderHeader", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
-    private Set<OrderLine> orderLines;
+    private Set<OrderLine> orderLines = new HashSet<>();
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @Fetch(FetchMode.SELECT)

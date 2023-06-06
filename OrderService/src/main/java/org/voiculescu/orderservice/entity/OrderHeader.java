@@ -29,6 +29,10 @@ public class OrderHeader extends BaseEntity {
     @OneToMany(mappedBy = "orderHeader", cascade = CascadeType.PERSIST)
     private Set<OrderLine> orderLines;
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "order_approval_id")
+    private OrderApproval orderApproval;
+
     public OrderHeader addOrderLine(OrderLine orderLine) {
         if (orderLines == null) {
             orderLines = new HashSet<>();

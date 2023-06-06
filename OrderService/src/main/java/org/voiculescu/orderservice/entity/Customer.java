@@ -37,6 +37,9 @@ public class Customer extends BaseEntity {
     @OneToMany(mappedBy = "customer")
     Set<OrderHeader> orders = new HashSet<>();
 
+    @Version
+    private Integer version;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

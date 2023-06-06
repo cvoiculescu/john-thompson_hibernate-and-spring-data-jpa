@@ -31,11 +31,14 @@ public class Boostrap implements CommandLineRunner {
 
     private void testingVersion() {
         Customer customer = new Customer().setName("Testing Version");
-        Customer savedCustomer = customerRepository.save(customer);
-        log.info("Customer version: {}", savedCustomer.getVersion());
-        savedCustomer.setName("testing version1");
-        Customer save = customerRepository.saveAndFlush(savedCustomer);
-        log.info("Customer version: {}", save.getVersion());
+        Customer savedCustomer1 = customerRepository.saveAndFlush(customer);
+        log.info("Customer version: {}", savedCustomer1.getVersion());
+        savedCustomer1.setName("Testing Version 2");
+        Customer savedCustomer2 = customerRepository.saveAndFlush(savedCustomer1);
+        log.info("Customer version: {}", savedCustomer2.getVersion());
+        savedCustomer2.setName("Testing Version 3");
+        Customer savedCustomer3 = customerRepository.saveAndFlush(savedCustomer2);
+        log.info("Customer version: {}", savedCustomer3.getVersion());
     }
 
     @Transactional

@@ -25,7 +25,9 @@ ALTER TABLE order_header
     DROP COLUMN bill_to_state,
     DROP COLUMN bill_to_zip_code;
 
+SET FOREIGN_KEY_CHECKS=0;
 TRUNCATE order_header;
+SET FOREIGN_KEY_CHECKS=1;
 
 ALTER TABLE order_header
     ADD COLUMN customer_id BIGINT NOT NULL;

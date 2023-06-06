@@ -16,6 +16,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="hibernate-and-spring-data-jpa" target="1.5" />
       <module name="sd-dao-jdbc (1)" target="17" />
       <module name="sd-dao-jdbc (2)" target="17" />
     </bytecodeTargetLevel>

@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.data.jpa.repository.EntityGraph;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,17 +23,19 @@ import java.util.Set;
 @Table(name = "order_header")
 public class OrderHeader extends BaseEntity {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    @OneToMany(mappedBy = "orderHeader", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "orderHeader", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     private Set<OrderLine> orderLines;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "orderHeader")
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @Fetch(FetchMode.SELECT)
     private OrderApproval orderApproval;
 
     public OrderHeader setOrderApproval(OrderApproval orderApproval) {

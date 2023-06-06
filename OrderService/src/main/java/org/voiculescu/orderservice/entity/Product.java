@@ -23,6 +23,7 @@ public class Product extends BaseEntity {
     private String description;
     @Enumerated(EnumType.STRING)
     private ProductStatus productStatus = ProductStatus.NEW;
+    private Integer quantityOnHand;
 
     @ManyToMany(mappedBy = "products")
     private Set<Category> categories = new LinkedHashSet<>();

@@ -1,6 +1,7 @@
 package org.voiculescu.orderservice.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-
 @Table(name = "order_header")
 public class OrderHeader extends BaseEntity {
 
@@ -26,12 +26,17 @@ public class OrderHeader extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    @OneToMany(mappedBy = "orderHeader", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "orderHeader", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Set<OrderLine> orderLines;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "order_approval_id")
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "orderHeader")
     private OrderApproval orderApproval;
+
+    public OrderHeader setOrderApproval(OrderApproval orderApproval) {
+        this.orderApproval = orderApproval;
+        orderApproval.setOrderHeader(this);
+        return this;
+    }
 
     public OrderHeader addOrderLine(OrderLine orderLine) {
         if (orderLines == null) {

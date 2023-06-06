@@ -1,8 +1,6 @@
 package org.voiculescu.orderservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +18,8 @@ public class OrderApproval extends BaseEntity {
 
     private String approvedBy;
 
-    @OneToOne(mappedBy = "orderApproval")
+    @OneToOne
+    @JoinColumn(name = "order_header_id")
     private OrderHeader orderHeader;
 
     @Override

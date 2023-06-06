@@ -10,8 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.Transactional;
 import org.voiculescu.orderservice.entity.*;
 
-import java.util.Set;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -29,9 +27,6 @@ class OrderHeaderRepositoryTest {
 
     @Autowired
     CustomerRepository customerRepository;
-
-    @Autowired
-    OrderApprovalRepository orderApprovalRepository;
 
     Product product;
     Customer customer;
@@ -82,7 +77,6 @@ class OrderHeaderRepositoryTest {
                 .setProduct(product);
         OrderApproval orderApproval = new OrderApproval()
                 .setApprovedBy("Approval");
-        orderApprovalRepository.save(orderApproval);
         OrderHeader orderHeader = new OrderHeader()
                 .setCustomer(customer)
                 .setOrderApproval(orderApproval)

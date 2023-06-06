@@ -1,6 +1,7 @@
 package org.voiculescu.orderservice.repository;
 
 import jakarta.persistence.LockModeType;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 import org.voiculescu.orderservice.entity.Product;

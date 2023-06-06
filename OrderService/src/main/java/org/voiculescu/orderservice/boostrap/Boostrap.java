@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.voiculescu.orderservice.entity.Customer;
 import org.voiculescu.orderservice.entity.CustomerRepository;
 import org.voiculescu.orderservice.entity.OrderHeader;
+import org.voiculescu.orderservice.entity.Product;
 import org.voiculescu.orderservice.repository.OrderHeaderRepository;
+import org.voiculescu.orderservice.services.ProductService;
 
 import java.util.Optional;
 
@@ -21,12 +23,22 @@ public class Boostrap implements CommandLineRunner {
     @Autowired
     OrderHeaderRepository orderHeaderRepository;
 
+    @Autowired
+    ProductService productService;
+
     private void readOrderData() {
         OrderHeader orderHeader = orderHeaderRepository.findById(1L).orElse(null);
         orderHeader.getOrderLines().forEach(ol -> {
             log.info(ol.getProduct().getDescription());
             ol.getProduct().getCategories().forEach(cat -> log.info("{}\n", cat.getDescription()));
         });
+    }
+
+    private void updateProduct(){
+        Product product = new Product().setDescription("My Product");
+        Product saved = productService.save(product);
+        Product saved2 = productService.updateQOH(saved.getId(), 25);
+        log.info("Updated quantity: {}",saved2.getQuantityOnHand());
     }
 
     private void testingVersion() {
@@ -41,10 +53,11 @@ public class Boostrap implements CommandLineRunner {
         log.info("Customer version: {}", savedCustomer3.getVersion());
     }
 
-    @Transactional
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         readOrderData();
         testingVersion();
+        updateProduct();
     }
 }

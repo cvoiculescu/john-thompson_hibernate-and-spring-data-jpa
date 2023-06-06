@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -36,6 +37,10 @@ public class OrderHeader extends BaseEntity {
         this.orderApproval = orderApproval;
         orderApproval.setOrderHeader(this);
         return this;
+    }
+
+    public Set<OrderLine> getOrderLines() {
+        return Collections.unmodifiableSet(orderLines);
     }
 
     public OrderHeader addOrderLine(OrderLine orderLine) {

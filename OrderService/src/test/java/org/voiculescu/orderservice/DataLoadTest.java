@@ -54,7 +54,7 @@ public class DataLoadTest {
         products.forEach(product ->
                 orderHeader.addOrderLine(new OrderLine()
                         .setProduct(product)
-                        .setQuantityOrdered(random.nextInt())
+                        .setQuantityOrdered(Math.abs(random.nextInt()))
                 ));
         return orderHeaderRepository.save(orderHeader);
     }

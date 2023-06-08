@@ -1,6 +1,7 @@
 package org.voiculescu.orderservice.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,8 +34,10 @@ public class Customer extends BaseEntity {
     @Length(max = 50)
     private String name;
     @Embedded
+    @Valid
     private Address shipping;
     @Embedded
+    @Valid
     private Address billTo;
     @Length(max = 20)
     private String phone;

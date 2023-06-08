@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.voiculescu.sdjpa.creditcard.interceptors.EncryptedString;
 
 @Entity
 @Getter
@@ -20,6 +21,7 @@ public class CreditCard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @EncryptedString
     private String creditCardNumber;
 
     private String cvv;

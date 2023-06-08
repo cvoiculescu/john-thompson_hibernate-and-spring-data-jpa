@@ -2,6 +2,7 @@ package org.voiculescu.orderservice.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,7 +42,8 @@ public class Customer extends BaseEntity {
     private Address billTo;
     @Length(max = 20)
     private String phone;
-    @Length(max = 20)
+    @Length(max = 50)
+    @Email
     private String email;
 
     @OneToMany(mappedBy = "customer")

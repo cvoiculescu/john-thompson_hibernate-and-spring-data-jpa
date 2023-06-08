@@ -1,6 +1,7 @@
 package org.voiculescu.orderservice.entity;
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,13 +18,13 @@ import java.util.Objects;
 @Accessors(chain = true)
 @Embeddable
 public class Address {
-    @Length(max = 30)
+    @Size(max = 30, min = 2)
     private String address;
-    @Length(max = 30)
+    @Size(max = 30, min = 2)
     private String city;
-    @Length(max = 30)
+    @Size(max = 30, min = 2)
     private String state;
-    @Length(max = 30)
+    @Size(max = 30, min = 2)
     private String zipCode;
 
     @Override

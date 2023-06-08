@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.voiculescu.sdjpa.creditcard.domain.CreditCard;
+import org.voiculescu.sdjpa.creditcard.services.EncryptionService;
 
 import java.util.Optional;
 
@@ -25,6 +26,8 @@ class CreditCardRepositoryTest {
 
     @Autowired
     CreditCardRepository creditCardRepository;
+    @Autowired
+    EncryptionService encryptionService;
 
     CreditCard testCreditCard;
 
@@ -42,6 +45,8 @@ class CreditCardRepositoryTest {
         CreditCard savedCC = creditCardRepository.saveAndFlush(testCreditCard);
         log.info("Fetching CC from DB");
         CreditCard fetchedCC = creditCardRepository.findById(savedCC.getId()).orElse(null);
+        log.info("CC in FREE: {}", CREDIT_CARD);
+        log.info("CC at REST: {}", encryptionService.encrypt(CREDIT_CARD));
 
         assertThat(fetchedCC).isNotNull();
         assertThat(fetchedCC.getId()).isNotNull();

@@ -27,6 +27,11 @@
           <package value="org.voiculescu.orderservice" />
         </packages>
       </persistence-unit>
+      <persistence-unit name="wordpress">
+        <packages>
+          <package value="org.voiculescu.sdjpa.wordpress" />
+        </packages>
+      </persistence-unit>
     </persistence-units>
   </component>
 </project>

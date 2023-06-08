@@ -9,6 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.voiculescu.sdjpa.creditcard.domain.CreditCard;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -36,13 +38,15 @@ class CreditCardRepositoryTest {
 
     @Test
     void testSaveAndStoreCreditCard() {
-        CreditCard saved = creditCardRepository.save(testCreditCard);
+        CreditCard savedCC = creditCardRepository.saveAndFlush(testCreditCard);
 
-        assertThat(saved).isNotNull();
-        assertThat(saved.getId()).isNotNull();
-        assertThat(saved.getCreditCardNumber()).isEqualTo(CREDIT_CARD);
-        assertThat(saved.getCvv()).isEqualTo(CVV);
-        assertThat(saved.getExpirationDate()).isEqualTo(EXPIRATION_DATE);
+        CreditCard fetchedCC = creditCardRepository.findById(savedCC.getId()).orElse(null);
+
+        assertThat(fetchedCC).isNotNull();
+        assertThat(fetchedCC.getId()).isNotNull();
+        assertThat(fetchedCC.getCreditCardNumber()).isEqualTo(CREDIT_CARD);
+        assertThat(fetchedCC.getCvv()).isEqualTo(CVV);
+        assertThat(fetchedCC.getExpirationDate()).isEqualTo(EXPIRATION_DATE);
     }
 
 }

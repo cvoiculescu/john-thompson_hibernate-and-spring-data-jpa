@@ -7,10 +7,12 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 @Entity
 @Getter
 @Setter
+@Accessors(chain = true)
 @NoArgsConstructor
 public class CreditCard {
 

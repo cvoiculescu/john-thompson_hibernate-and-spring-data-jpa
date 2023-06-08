@@ -37,6 +37,11 @@
           <package value="org.voiculescu.sdjpa.wordpress" />
         </packages>
       </persistence-unit>
+      <persistence-unit name="payment">
+        <packages>
+          <package value="org.voiculescu.sdjpa.creditcard" />
+        </packages>
+      </persistence-unit>
     </persistence-units>
   </component>
 </project>

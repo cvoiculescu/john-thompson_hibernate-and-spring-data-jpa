@@ -38,8 +38,9 @@ class CreditCardRepositoryTest {
 
     @Test
     void testSaveAndStoreCreditCard() {
+        log.info("Saving CC to DB");
         CreditCard savedCC = creditCardRepository.saveAndFlush(testCreditCard);
-
+        log.info("Fetching CC from DB");
         CreditCard fetchedCC = creditCardRepository.findById(savedCC.getId()).orElse(null);
 
         assertThat(fetchedCC).isNotNull();

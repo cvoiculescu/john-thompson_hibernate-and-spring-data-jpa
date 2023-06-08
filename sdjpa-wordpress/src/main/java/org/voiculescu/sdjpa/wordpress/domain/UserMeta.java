@@ -26,9 +26,8 @@ public class UserMeta {
     @Column(name = "umeta_id", nullable = false)
     private Long id;
 
-    @NotNull
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne
+    private User user;
 
     @Size(max = 255)
     @Column(name = "meta_key")

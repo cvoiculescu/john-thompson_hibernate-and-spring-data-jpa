@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -68,5 +70,9 @@ public class User {
     @NotNull
     @Column(name = "display_name", nullable = false, length = 250)
     private String displayName;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    Set<UserMeta> userMetaSet = new HashSet<>();
 
 }

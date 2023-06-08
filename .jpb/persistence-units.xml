@@ -27,7 +27,7 @@
           <package value="org.voiculescu.orderservice" />
         </packages>
       </persistence-unit>
-      <persistence-unit name="wordpress">
+      <persistence-unit name="wordpress" defaultSearchScope="Project">
         <packages>
           <package value="org.voiculescu.sdjpa.wordpress" />
         </packages>

@@ -12,7 +12,14 @@ import org.hibernate.type.SqlTypes;
 @Getter
 @Setter
 @Entity
-@Table(name = "wp_usermeta")
+@Table(name = "wp_usermeta",
+        indexes = {
+                @Index(name = "meta_key", columnList = "meta_key"),
+                @Index(name = "user_id", columnList = "user_id")
+        },
+        uniqueConstraints = {
+                @UniqueConstraint(name = "PRIMARY", columnNames = {"umeta_id"})
+        })
 public class UserMeta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

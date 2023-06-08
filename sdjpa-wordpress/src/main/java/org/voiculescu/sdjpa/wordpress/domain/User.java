@@ -11,7 +11,15 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @Entity
-@Table(name = "wp_users")
+@Table(name = "wp_users",
+        indexes = {
+                @Index(name = "user_email", columnList = "user_email"),
+                @Index(name = "user_login_ley", columnList = "user_login"),
+                @Index(name = "user_nicename", columnList = "user_nicename")
+        },
+        uniqueConstraints = {
+                @UniqueConstraint(name = "PRIMARY", columnNames = {"ID"})
+        })
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -8,9 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sdjpa-intro" />
+        <module name="sdjpa-spring-data-queries" />
+        <module name="sdjpa-inheritance" />
         <module name="OrderService" />
         <module name="sdjpa-hibernate-dao" />
-        <module name="sdjpa-spring-data-queries" />
         <module name="sdjpa-jdbc-template" />
         <module name="sdjpa-jdbc" />
       </profile>
@@ -27,6 +28,7 @@
       <module name="sd-dao-jdbc (1)" options="-parameters" />
       <module name="sd-dao-jdbc (2)" options="-parameters" />
       <module name="sdjpa-hibernate-dao" options="-parameters" />
+      <module name="sdjpa-inheritance" options="-parameters" />
       <module name="sdjpa-intro" options="-parameters" />
       <module name="sdjpa-jdbc" options="-parameters" />
       <module name="sdjpa-jdbc-template" options="-parameters" />

@@ -6,10 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.voiculescu.sdjpa.creditcard.domain.CreditCard;
 import org.voiculescu.sdjpa.creditcard.services.EncryptionService;
 
+import java.util.Map;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,6 +30,8 @@ class CreditCardRepositoryTest {
     CreditCardRepository creditCardRepository;
     @Autowired
     EncryptionService encryptionService;
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     CreditCard testCreditCard;
 
@@ -47,6 +51,13 @@ class CreditCardRepositoryTest {
         CreditCard fetchedCC = creditCardRepository.findById(savedCC.getId()).orElse(null);
         log.info("CC in FREE: {}", CREDIT_CARD);
         log.info("CC at REST: {}", encryptionService.encrypt(CREDIT_CARD));
+
+        Map<String, Object> dbRow = jdbcTemplate.queryForMap("SELECT * FROM credit_card " +
+                "WHERE id = " + savedCC.getId());
+        String dbCardValue = (String) dbRow.get("credit_card_number");
+
+        assertThat(savedCC.getCreditCardNumber()).isNotEqualTo(dbCardValue);
+        assertThat(dbCardValue).isEqualTo(encryptionService.encrypt(CREDIT_CARD));
 
         assertThat(fetchedCC).isNotNull();
         assertThat(fetchedCC.getId()).isNotNull();

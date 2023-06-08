@@ -49,6 +49,17 @@ class CreditCardRepositoryTest {
         CreditCard savedCC = creditCardRepository.saveAndFlush(testCreditCard);
         log.info("Fetching CC from DB");
         CreditCard fetchedCC = creditCardRepository.findById(savedCC.getId()).orElse(null);
+
+        assertThat(fetchedCC).isNotNull();
+        assertThat(fetchedCC.getId()).isNotNull();
+        assertThat(fetchedCC.getCreditCardNumber()).isEqualTo(CREDIT_CARD);
+        assertThat(fetchedCC.getCvv()).isEqualTo(CVV);
+        assertThat(fetchedCC.getExpirationDate()).isEqualTo(EXPIRATION_DATE);
+    }
+
+    @Test
+    void testEncryption(){
+        CreditCard savedCC = creditCardRepository.saveAndFlush(testCreditCard);
         log.info("CC in FREE: {}", CREDIT_CARD);
         log.info("CC at REST: {}", encryptionService.encrypt(CREDIT_CARD));
 
@@ -58,12 +69,6 @@ class CreditCardRepositoryTest {
 
         assertThat(savedCC.getCreditCardNumber()).isNotEqualTo(dbCardValue);
         assertThat(dbCardValue).isEqualTo(encryptionService.encrypt(CREDIT_CARD));
-
-        assertThat(fetchedCC).isNotNull();
-        assertThat(fetchedCC.getId()).isNotNull();
-        assertThat(fetchedCC.getCreditCardNumber()).isEqualTo(CREDIT_CARD);
-        assertThat(fetchedCC.getCvv()).isEqualTo(CVV);
-        assertThat(fetchedCC.getExpirationDate()).isEqualTo(EXPIRATION_DATE);
     }
 
 }

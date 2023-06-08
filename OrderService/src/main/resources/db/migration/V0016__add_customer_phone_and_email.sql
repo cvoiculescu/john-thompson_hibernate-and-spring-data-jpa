@@ -1,0 +1,3 @@
+ALTER TABLE customer
+    ADD COLUMN phone VARCHAR(20),
+    ADD COLUMN email VARCHAR(20);

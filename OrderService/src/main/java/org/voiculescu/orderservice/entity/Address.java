@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.Objects;
 
@@ -16,9 +17,13 @@ import java.util.Objects;
 @Accessors(chain = true)
 @Embeddable
 public class Address {
+    @Length(max = 30)
     private String address;
+    @Length(max = 30)
     private String city;
+    @Length(max = 30)
     private String state;
+    @Length(max = 30)
     private String zipCode;
 
     @Override

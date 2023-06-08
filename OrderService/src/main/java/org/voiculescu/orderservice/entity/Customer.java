@@ -1,10 +1,12 @@
 package org.voiculescu.orderservice.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -28,11 +30,16 @@ import java.util.Set;
 @Table(name = "customer")
 public class Customer extends BaseEntity {
 
+    @Length(max = 50)
     private String name;
     @Embedded
     private Address shipping;
     @Embedded
     private Address billTo;
+    @Length(max = 20)
+    private String phone;
+    @Length(max = 20)
+    private String email;
 
     @OneToMany(mappedBy = "customer")
     Set<OrderHeader> orders = new HashSet<>();

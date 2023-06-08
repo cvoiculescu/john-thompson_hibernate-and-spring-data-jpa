@@ -22,7 +22,7 @@
           <package value="org.voiculescu.orderservice" />
         </packages>
       </persistence-unit>
-      <persistence-unit name="orderservice">
+      <persistence-unit name="orderservice" defaultSearchScope="Project">
         <packages>
           <package value="org.voiculescu.orderservice" />
         </packages>

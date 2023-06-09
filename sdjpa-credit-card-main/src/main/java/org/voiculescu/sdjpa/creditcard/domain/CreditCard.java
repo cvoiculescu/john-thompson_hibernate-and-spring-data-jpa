@@ -1,13 +1,11 @@
 package org.voiculescu.sdjpa.creditcard.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import lombok.extern.slf4j.Slf4j;
 import org.voiculescu.sdjpa.creditcard.interceptors.EncryptedString;
 
 @Entity
@@ -15,6 +13,7 @@ import org.voiculescu.sdjpa.creditcard.interceptors.EncryptedString;
 @Setter
 @Accessors(chain = true)
 @NoArgsConstructor
+@Slf4j
 public class CreditCard {
 
     @Id
@@ -28,4 +27,8 @@ public class CreditCard {
 
     private String expirationDate;
 
+    @PrePersist
+    public void prePersist() {
+        log.info("JPA PrePersist");
+    }
 }

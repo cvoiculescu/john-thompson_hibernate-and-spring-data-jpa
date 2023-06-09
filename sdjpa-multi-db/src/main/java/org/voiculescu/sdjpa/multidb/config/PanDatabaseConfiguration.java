@@ -20,6 +20,7 @@ public class PanDatabaseConfiguration {
     }
 
     @Bean
+    @Primary
     DataSource cardDataSource(@Qualifier("panDataSourceProperties") DataSourceProperties panDataSourceProperties) {
         return panDataSourceProperties.initializeDataSourceBuilder()
                 .type(HikariDataSource.class)

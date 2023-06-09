@@ -32,6 +32,7 @@ public class PanDatabaseConfiguration {
     }
 
     @Bean
+    @Primary
     public LocalContainerEntityManagerFactoryBean cardHolderEntityManagerFactory(
             @Qualifier("panDataSource") DataSource panDataSource,
             EntityManagerFactoryBuilder builder) {

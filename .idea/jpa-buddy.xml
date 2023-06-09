@@ -3,5 +3,7 @@
   <component name="JpaBuddyIdeaProjectConfig">
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
+    <option name="sourceModelValue" value="multidb-pan" />
+    <option name="targetDbValue" value="91685067-9480-4b0c-9b59-ad0e2e5b6662" />
   </component>
 </project>

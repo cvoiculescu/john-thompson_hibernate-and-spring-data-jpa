@@ -1,8 +1,14 @@
 package org.voiculescu.sdjpa.multidb.domain.creditcard;
 
+import lombok.*;
 import org.voiculescu.sdjpa.multidb.domain.CreditCardConverter;
 import jakarta.persistence.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class CreditCard {
 

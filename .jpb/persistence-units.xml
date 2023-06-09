@@ -2,34 +2,9 @@
 <project version="4">
   <component name="PersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit name="jdbc-template" defaultSearchScope="Project">
-        <packages>
-          <package value="org.voiculescu.sdjpajdbctemplate" />
-        </packages>
-      </persistence-unit>
-      <persistence-unit name="hibernate-dao">
-        <packages>
-          <package value="org.voiculescu.sdjpahibernatedao" />
-        </packages>
-      </persistence-unit>
-      <persistence-unit name="springdataqueries">
-        <packages>
-          <package value="org.voiculescu.sdjpaspringdataqueries" />
-        </packages>
-      </persistence-unit>
       <persistence-unit moduleName="OrderService" name="Default">
         <packages>
           <package value="org.voiculescu.orderservice" />
-        </packages>
-      </persistence-unit>
-      <persistence-unit name="orderservice" defaultSearchScope="Project">
-        <packages>
-          <package value="org.voiculescu.orderservice" />
-        </packages>
-      </persistence-unit>
-      <persistence-unit name="wordpress" defaultSearchScope="Project">
-        <packages>
-          <package value="org.voiculescu.sdjpa.wordpress" />
         </packages>
       </persistence-unit>
       <persistence-unit moduleName="sdjpa-wordpress" name="Default">
@@ -37,9 +12,19 @@
           <package value="org.voiculescu.sdjpa.wordpress" />
         </packages>
       </persistence-unit>
-      <persistence-unit name="payment">
+      <persistence-unit name="multidb-card">
         <packages>
-          <package value="org.voiculescu.sdjpa.creditcard" />
+          <package value="org.voiculescu.sdjpa.multidb.domain.creditcard" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit name="multidb-cardholder">
+        <packages>
+          <package value="org.voiculescu.sdjpa.multidb.domain.cardholder" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit name="multidb-pan">
+        <packages>
+          <package value="org.voiculescu.sdjpa.multidb.domain.pan" />
         </packages>
       </persistence-unit>
     </persistence-units>

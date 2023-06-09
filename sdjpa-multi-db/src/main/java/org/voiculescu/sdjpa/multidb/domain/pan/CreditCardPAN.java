@@ -1,11 +1,15 @@
 package org.voiculescu.sdjpa.multidb.domain.pan;
 
+import jakarta.persistence.*;
+import lombok.*;
 import org.voiculescu.sdjpa.multidb.domain.CreditCardConverter;
-import jakarta.persistence.Convert;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
 public class CreditCardPAN {
 
     @Id

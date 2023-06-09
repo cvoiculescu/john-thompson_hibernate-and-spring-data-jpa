@@ -14,14 +14,16 @@ import org.voiculescu.sdjpa.creditcard.interceptors.EncryptedString;
 @Accessors(chain = true)
 @NoArgsConstructor
 @Slf4j
-@EntityListeners(CreditCardJPACallback.class)
+//@EntityListeners(CreditCardJPACallback.class)
+
 public class CreditCard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @EncryptedString
+    //    @EncryptedString
+    @Convert(converter = CreditCardConverter.class)
     private String creditCardNumber;
 
     private String cvv;

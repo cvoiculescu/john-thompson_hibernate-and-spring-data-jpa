@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 @Configuration
 public class CardDatabaseConfiguration {
     @Bean
-    @ConfigurationProperties(prefix = "spring.card")
+    @ConfigurationProperties("spring.card.datasource")
     public DataSourceProperties cardDataSourceProperties() {
         return new DataSourceProperties();
     }

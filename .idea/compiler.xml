@@ -2,7 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -10,31 +9,26 @@
         <module name="sdjpa-intro" />
         <module name="sdjpa-spring-data-queries" />
         <module name="sdjpa-inheritance" />
-        <module name="OrderService" />
+        <module name="sdjpa-multi-db" />
+        <module name="sdjpa-orderservice" />
         <module name="sdjpa-hibernate-dao" />
-        <module name="sdjpa-jdbc-template" />
         <module name="sdjpa-credit-card" />
-        <module name="sdjpa-jdbc" />
+        <module name="sdjpa-jdbc-template" />
         <module name="sdjpa-wordpress" />
+        <module name="sdjpa-jdbc" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="hibernate-and-spring-data-jpa" target="1.5" />
-      <module name="sd-dao-jdbc (1)" target="17" />
-      <module name="sd-dao-jdbc (2)" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="OrderService" options="-parameters" />
-      <module name="sd-dao-jdbc (1)" options="-parameters" />
-      <module name="sd-dao-jdbc (2)" options="-parameters" />
       <module name="sdjpa-credit-card" options="-parameters" />
       <module name="sdjpa-hibernate-dao" options="-parameters" />
       <module name="sdjpa-inheritance" options="-parameters" />
       <module name="sdjpa-intro" options="-parameters" />
       <module name="sdjpa-jdbc" options="-parameters" />
       <module name="sdjpa-jdbc-template" options="-parameters" />
+      <module name="sdjpa-multi-db" options="-parameters" />
+      <module name="sdjpa-orderservice" options="-parameters" />
       <module name="sdjpa-spring-data-queries" options="-parameters" />
       <module name="sdjpa-wordpress" options="-parameters" />
     </option>

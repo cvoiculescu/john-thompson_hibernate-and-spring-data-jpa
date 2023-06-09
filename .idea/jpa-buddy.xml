@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="JpaBuddyIdeaProjectConfig" ddlActionDbType="mysql" newRepositoryParent="org.springframework.data.jpa.repository.JpaRepository">
+  <component name="JpaBuddyIdeaProjectConfig">
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
-    <option name="sourceDbValue" value="4c315540-3795-4d89-b5b4-9a812d84c733" />
-    <option name="sourceModelValue" value="wordpress" />
-    <option name="targetDbValue" value="e1b91230-b8a6-4d78-b6d8-ac938a0e4d05" />
-    <option name="isSnapshotDb" value="false" />
-    <option name="snapshotDbValue" value="4c315540-3795-4d89-b5b4-9a812d84c733" />
-    <option name="snapshotModelValue" value="jdbc-template" />
-    <option name="reverseEngineeringLastDbConnectionId" value="e1b91230-b8a6-4d78-b6d8-ac938a0e4d05__wp" />
-    <option name="newEntityIdStrategy" value="Identity" />
   </component>
 </project>

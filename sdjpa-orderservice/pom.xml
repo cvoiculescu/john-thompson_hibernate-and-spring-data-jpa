@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.voiculescu</groupId>
-    <artifactId>OrderService</artifactId>
+    <artifactId>sdjpa-orderservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>OrderService</name>
+    <name>sdjpa-orderservice</name>
     <description>OrderService</description>
     <properties>
         <java.version>17</java.version>

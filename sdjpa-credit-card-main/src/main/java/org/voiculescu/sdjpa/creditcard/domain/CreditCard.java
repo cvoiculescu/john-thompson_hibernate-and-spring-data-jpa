@@ -14,6 +14,7 @@ import org.voiculescu.sdjpa.creditcard.interceptors.EncryptedString;
 @Accessors(chain = true)
 @NoArgsConstructor
 @Slf4j
+@EntityListeners(CreditCardJPACallback.class)
 public class CreditCard {
 
     @Id

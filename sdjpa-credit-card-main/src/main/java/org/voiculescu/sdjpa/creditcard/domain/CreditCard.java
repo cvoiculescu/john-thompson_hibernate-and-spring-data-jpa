@@ -28,8 +28,4 @@ public class CreditCard {
 
     private String expirationDate;
 
-    @PrePersist
-    public void prePersist() {
-        log.info("JPA PrePersist");
-    }
 }

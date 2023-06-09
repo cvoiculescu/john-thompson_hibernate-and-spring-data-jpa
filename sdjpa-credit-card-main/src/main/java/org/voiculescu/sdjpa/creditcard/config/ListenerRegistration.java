@@ -13,7 +13,7 @@ import org.voiculescu.sdjpa.creditcard.listeners.PreUpdateListener;
 
 import java.util.EventListener;
 
-@Component
+//@Component
 public class ListenerRegistration implements BeanPostProcessor {
 
     private final PostLoadListener postLoadListener;

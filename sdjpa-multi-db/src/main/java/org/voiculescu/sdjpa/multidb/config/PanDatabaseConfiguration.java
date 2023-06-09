@@ -8,6 +8,7 @@ import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -17,8 +18,14 @@ import org.voiculescu.sdjpa.multidb.domain.pan.CreditCardPAN;
 import javax.sql.DataSource;
 import java.util.Objects;
 
+@EnableJpaRepositories(
+        basePackages = "org.voiculescu.sdjpa.multidb.repositories.pan",
+        entityManagerFactoryRef = "panEntityManagerFactory",
+        transactionManagerRef = "panTransactionManager"
+)
 @Configuration
 public class PanDatabaseConfiguration {
+
     @Bean
     @Primary
     @ConfigurationProperties("spring.pan.datasource")

@@ -1,5 +1,6 @@
 package org.voiculescu.sdjpa.multidb.services;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.voiculescu.sdjpa.multidb.domain.cardholder.CreditCardHolder;
@@ -21,8 +22,17 @@ public class CreditCardServiceImpl implements CreditCardService {
 
     @Override
     public CreditCard getCreditCardById(Long id) {
-        //todo impl
-        return null;
+        CreditCard creditCard = creditCardRepository.findById(id)
+                .orElseThrow(EntityNotFoundException::new);
+        CreditCardPAN creditCardPAN = creditCardPANRepository.findByCreditCardId(id)
+                .orElseThrow(EntityNotFoundException::new);
+        CreditCardHolder creditCardHolder = creditCardHolderRepository.findByCreditCardId(id)
+                .orElseThrow(EntityNotFoundException::new);
+        creditCard.setCreditCardNumber(creditCardPAN.getCreditCardNumber())
+                .setFirstName(creditCardHolder.getFirstName())
+                .setLastName(creditCardHolder.getLastName())
+                .setZipCode(creditCardHolder.getZipCode());
+        return creditCard;
     }
 
     @Override

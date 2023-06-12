@@ -9,7 +9,7 @@ import org.voiculescu.sdjpa.multidb.domain.CreditCardConverter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
+@Entity(name = "credit_card_pan")
 public class CreditCardPAN {
 
     @Id

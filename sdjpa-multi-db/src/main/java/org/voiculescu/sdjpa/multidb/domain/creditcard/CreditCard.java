@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
+@Entity(name = "credit_card")
 public class CreditCard {
 
     @Id

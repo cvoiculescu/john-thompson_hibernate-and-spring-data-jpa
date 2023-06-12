@@ -11,7 +11,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name = "credit_card_holder")
 public class CreditCardHolder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

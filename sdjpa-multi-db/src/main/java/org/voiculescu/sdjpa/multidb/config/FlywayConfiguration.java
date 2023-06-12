@@ -46,7 +46,7 @@ public class FlywayConfiguration {
     private Flyway flyway(DataSourceProperties dataSourceProperties, String location) {
         return Flyway.configure()
                 .dataSource(dataSourceProperties.getUrl(), dataSourceProperties.getUsername(), dataSourceProperties.getPassword())
-                .locations(String.format("classpath:/db/migrations/%s", location))
+                .locations(String.format("classpath:/db/migration/%s", location))
                 .load();
     }
 

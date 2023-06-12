@@ -20,7 +20,7 @@ public class CreditCard {
     private String cvv;
 
     @Convert(converter = CreditCardConverter.class)
-    private String expirationDate;
+   private String expirationDate;
 
 }
 

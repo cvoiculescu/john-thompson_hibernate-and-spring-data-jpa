@@ -16,6 +16,7 @@ import org.voiculescu.sdjpa.multidb.domain.creditcard.CreditCard;
 
 import javax.sql.DataSource;
 import java.util.Objects;
+import java.util.Properties;
 
 @EnableJpaRepositories(
         basePackages = "org.voiculescu.sdjpa.multidb.repositories.card",
@@ -41,10 +42,21 @@ public class CardDatabaseConfiguration {
     public LocalContainerEntityManagerFactoryBean cardEntityManagerFactory(
             @Qualifier("cardDataSource") DataSource cardDataSource,
             EntityManagerFactoryBuilder builder) {
-        return builder.dataSource(cardDataSource)
-                .packages(CreditCard.class)
-                .persistenceUnit("card")
-                .build();
+
+        Properties props = new Properties();
+        props.put("hibernate.hbm2ddl.auto", "validate");
+        props.put("hibernate.physical_naming_strategy",
+                "org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy");
+
+        LocalContainerEntityManagerFactoryBean efb =
+                builder.dataSource(cardDataSource)
+                        .packages(CreditCard.class)
+                        .persistenceUnit("card")
+                        .build();
+
+        efb.setJpaProperties(props);
+
+        return efb;
     }
 
     @Bean

@@ -17,6 +17,7 @@ import org.voiculescu.sdjpa.multidb.domain.pan.CreditCardPAN;
 
 import javax.sql.DataSource;
 import java.util.Objects;
+import java.util.Properties;
 
 @EnableJpaRepositories(
         basePackages = "org.voiculescu.sdjpa.multidb.repositories.pan",
@@ -47,10 +48,20 @@ public class PanDatabaseConfiguration {
     public LocalContainerEntityManagerFactoryBean panEntityManagerFactory(
             @Qualifier("panDataSource") DataSource panEntityManagerFactory,
             EntityManagerFactoryBuilder builder) {
-        return builder.dataSource(panEntityManagerFactory)
+
+        Properties props = new Properties();
+        props.put("hibernate.hbm2ddl.auto", "validate");
+        props.put("hibernate.physical_naming_strategy",
+                "org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy");
+
+        LocalContainerEntityManagerFactoryBean efb = builder.dataSource(panEntityManagerFactory)
                 .packages(CreditCardPAN.class)
                 .persistenceUnit("pan")
                 .build();
+
+        efb.setJpaProperties(props);
+
+        return efb;
     }
 
     @Bean

@@ -1,6 +1,7 @@
 package org.voiculescu.sdjpa.multidb.domain.creditcard;
 
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.voiculescu.sdjpa.multidb.domain.CreditCardConverter;
 import jakarta.persistence.*;
 
@@ -8,6 +9,7 @@ import jakarta.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Accessors(chain = true)
 @Builder
 @Entity(name = "credit_card")
 public class CreditCard {

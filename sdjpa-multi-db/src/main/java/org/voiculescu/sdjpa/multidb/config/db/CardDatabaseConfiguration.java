@@ -1,4 +1,4 @@
-package org.voiculescu.sdjpa.multidb.config;
+package org.voiculescu.sdjpa.multidb.config.db;
 
 import com.zaxxer.hikari.HikariDataSource;
 

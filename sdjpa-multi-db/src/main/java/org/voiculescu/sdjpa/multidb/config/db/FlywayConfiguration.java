@@ -1,4 +1,4 @@
-package org.voiculescu.sdjpa.multidb.config;
+package org.voiculescu.sdjpa.multidb.config.db;
 
 import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Qualifier;

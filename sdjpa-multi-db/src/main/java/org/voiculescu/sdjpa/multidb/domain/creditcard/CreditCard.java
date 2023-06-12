@@ -34,8 +34,6 @@ public class CreditCard {
     @Transient
     private String zipCode;
 
-
-
 }
 
 
